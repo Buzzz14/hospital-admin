@@ -1,3 +1,9 @@
+export interface Doctor {
+  id: string;
+  fullName: string;
+  specialty?: string;
+}
+
 export interface User {
   id: string;
   fullName: string;

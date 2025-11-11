@@ -1,4 +1,4 @@
-import { User } from "@/types";
+import { Doctor, User } from "@/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 interface DeleteUserResponse {
@@ -12,7 +12,7 @@ export const usersApi = createApi({
   tagTypes: ["User"],
 
   endpoints: (build) => ({
-    getDoctors: build.query<User[], void>({
+    getDoctors: build.query<Doctor[], void>({
       query: () => "doctors",
       providesTags: (result) =>
         result
