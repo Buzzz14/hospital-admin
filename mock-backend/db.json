@@ -9,18 +9,7 @@
       "gender": "Female",
       "address": "Baneshwor, Kathmandu",
       "appointmentTime": "2025-11-16T14:00:00.000Z",
-      "assignedDoctor": ""
-    },
-    {
-      "id": "u-102",
-      "fullName": "Sita Sharma",
-      "email": "sita.sharma@example.com",
-      "phoneNumber": "+977-9855566677",
-      "role": "User",
-      "gender": "Female",
-      "address": "Pokhara-10, Lakeside",
-      "appointmentTime": "2025-11-20T09:00:00.000Z",
-      "assignedDoctor": ""
+      "assignedDoctor": "doc-3"
     },
     {
       "id": "e443",

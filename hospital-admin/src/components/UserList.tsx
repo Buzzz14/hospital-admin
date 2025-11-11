@@ -1,10 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   useGetUsersQuery,
+  useDeleteUserMutation,
   useGetDoctorsQuery,
 } from "../redux/features/users/usersApi";
+import { Button } from "./ui/button";
+import EditUserModal from "./EditUserModal";
+import DeleteUserModal from "./DeleteUserModal";
 import {
   Table,
   TableBody,
@@ -18,11 +22,28 @@ import { User } from "@/types";
 export default function UserList() {
   const { data: users, error, isLoading } = useGetUsersQuery();
   const { data: doctors = [] } = useGetDoctorsQuery();
+  const [deleteUser] = useDeleteUserMutation();
 
   const getDoctorName = (doctorId: string | null) => {
     if (!doctorId) return "N/A";
-    const doctor = doctors.find((d: any) => d.id === doctorId);
+    const doctor = doctors.find((d) => d.id === doctorId);
     return doctor ? doctor.fullName : "Unknown Doctor";
+  };
+
+  const [showModal, setShowModal] = useState(false);
+  const [userToDelete, setUserToDelete] = useState<User | null>(null);
+
+  const handleDeleteClick = (user: User) => {
+    setUserToDelete(user);
+    setShowModal(true);
+  };
+
+  const confirmDelete = async () => {
+    if (userToDelete) {
+      await deleteUser(userToDelete.id);
+      setUserToDelete(null);
+      setShowModal(false);
+    }
   };
 
   if (isLoading) return <p>Loading users...</p>;
@@ -43,10 +64,11 @@ export default function UserList() {
               <TableHead>Gender</TableHead>
               <TableHead>Appointment</TableHead>
               <TableHead>Assigned Doctor</TableHead>
+              <TableHead>Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {users?.map((user: User) => (
+            {users?.map((user) => (
               <TableRow key={user.id}>
                 <TableCell>{user.fullName}</TableCell>
                 <TableCell>{user.role}</TableCell>
@@ -57,11 +79,29 @@ export default function UserList() {
                 <TableCell>
                   {getDoctorName(user.assignedDoctor || null)}
                 </TableCell>
+                <TableCell>
+                  <div className="flex gap-2">
+                    <EditUserModal user={user} />
+                    <Button
+                      variant="destructive"
+                      onClick={() => handleDeleteClick(user)}
+                    >
+                      Delete
+                    </Button>
+                  </div>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </div>
+
+      <DeleteUserModal
+        open={showModal}
+        onOpenChange={setShowModal}
+        user={userToDelete}
+        onConfirm={confirmDelete}
+      />
     </div>
   );
 }
