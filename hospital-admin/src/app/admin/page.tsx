@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import UserList from "@/components/UserList";
+import AddUserModal from "@/components/AddUserModal";
 
 const Admin = () => {
   const router = useRouter();
@@ -31,6 +32,7 @@ const Admin = () => {
         </div>
       </header>
       <div className="max-w-7xl mx-auto px-6 py-8 space-y-8">
+        <AddUserModal />
         <UserList />
       </div>
     </main>

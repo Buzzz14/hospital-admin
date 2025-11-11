@@ -9,18 +9,40 @@
       "gender": "Female",
       "address": "Baneshwor, Kathmandu",
       "appointmentTime": "2025-11-16T14:00:00.000Z",
-      "assignedDoctor": ""
+      "assignedDoctor": "doc-3"
     },
     {
-      "id": "u-102",
-      "fullName": "Sita Sharma",
-      "email": "sita.sharma@example.com",
-      "phoneNumber": "+977-9855566677",
+      "id": "e443",
+      "fullName": "Sushan Bajracharya",
+      "email": "sushanbajracharya14@gmail.com",
+      "phoneNumber": "+9779860395357",
       "role": "User",
-      "gender": "Female",
-      "address": "Pokhara-10, Lakeside",
-      "appointmentTime": "2025-11-20T09:00:00.000Z",
-      "assignedDoctor": ""
+      "gender": "Male",
+      "address": "Madhyapur Thimi",
+      "appointmentTime": "2025-11-11T10:45",
+      "assignedDoctor": "doc-1"
+    }
+  ],
+  "doctors": [
+    {
+      "id": "doc-1",
+      "fullName": "Dr. Alice Morgan",
+      "specialty": "Cardiology"
+    },
+    {
+      "id": "doc-2",
+      "fullName": "Dr. Benjamin Lee",
+      "specialty": "General Medicine"
+    },
+    {
+      "id": "doc-3",
+      "fullName": "Dr. Clara Singh",
+      "specialty": "Pediatrics"
+    },
+    {
+      "id": "doc-4",
+      "fullName": "Dr. Daniel Park",
+      "specialty": "Orthopedics"
     }
   ]
 }
