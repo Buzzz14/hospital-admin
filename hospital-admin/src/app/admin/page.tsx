@@ -4,6 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import UserList from "@/components/UserList";
 
 const Admin = () => {
   const router = useRouter();
@@ -29,12 +30,8 @@ const Admin = () => {
           </Button>
         </div>
       </header>
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
-          <p className="text-gray-600 dark:text-gray-400">
-            Welcome to the Admin Dashboard
-          </p>
-        </div>
+      <div className="max-w-7xl mx-auto px-6 py-8 space-y-8">
+        <UserList />
       </div>
     </main>
   );
